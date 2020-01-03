@@ -1,0 +1,20 @@
+{
+    "windows": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-wordnet-windows-183917-authRole",
+            "UnauthRoleArn": "arn:aws:iam::830320637348:role/amplify-wordnet-windows-183917-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::830320637348:role/amplify-wordnet-windows-183917-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-wordnet-windows-183917-deployment",
+            "UnauthRoleName": "amplify-wordnet-windows-183917-unauthRole",
+            "StackName": "amplify-wordnet-windows-183917",
+            "StackId": "arn:aws:cloudformation:us-east-1:830320637348:stack/amplify-wordnet-windows-183917/efc81bd0-2838-11ea-ac51-0a73682547f5",
+            "AmplifyAppId": "d8j1t1i38smjw"
+        },
+        "categories": {
+            "auth": {
+                "wordnet3017d1b9": {}
+            }
+        }
+    }
+}

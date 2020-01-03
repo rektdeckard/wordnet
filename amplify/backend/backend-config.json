@@ -1,0 +1,27 @@
+{
+	"api": {
+		"wordnet": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "wordnet API key",
+							"apiKeyExpirationDays": "14"
+						}
+					}
+				}
+			}
+		}
+	},
+	"auth": {
+		"wordnet3017d1b9": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
