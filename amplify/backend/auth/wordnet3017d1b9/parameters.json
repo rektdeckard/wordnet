@@ -1,6 +1,6 @@
 {
     "identityPoolName": "wordnet3017d1b9_identitypool_3017d1b9",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "wordne3017d1b9",
     "userPoolName": "wordnet3017d1b9_userpool_3017d1b9",
     "autoVerifiedAttributes": [
@@ -44,10 +44,19 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "manual",
     "usernameAttributes": [
         "email"
     ],
     "userPoolGroupList": [],
-    "dependsOn": []
+    "dependsOn": [],
+    "thirdPartyAuth": false,
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": "{}",
+    "hostedUI": false,
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": []
 }

@@ -1,14 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  TextInput,
-  StatusBar,
-} from 'react-native';
-import Amplify, {Auth} from 'aws-amplify';
-import awsconfig from './aws-exports';
+import {StyleSheet, ScrollView, StatusBar} from 'react-native';
 import {withAuthenticator} from 'aws-amplify-react-native';
 import {
   ApplicationProvider,
@@ -22,7 +13,12 @@ import {
 } from '@ui-kitten/components';
 import {mapping, dark as darkTheme, light as lightTheme} from '@eva-design/eva';
 
-Amplify.configure(awsconfig);
+import { graphql, compose } from "react-apollo";
+import { buildSubscription } from "aws-appsync";
+import { graphqlMutation } from "aws-appsync-react";
+import { listWordNets, listNodes } from './graphql/queries';
+import { createWordNet, createNode } from "./graphql/mutations";
+import { onCreateWordNet, onCreateNode, onDeleteWordNet, onDeleteNode, onUpdateWordNet, onUpdateNode } from "./graphql/subscriptions";
 
 const App = () => {
   const [theme, setTheme] = useState(lightTheme);
@@ -55,7 +51,12 @@ const App = () => {
     <ApplicationProvider mapping={mapping} theme={theme}>
       <StatusBar backgroundColor="black" />
       <Layout level="4" style={styles.container}>
-        <Toggle text="Dark" status="warning" checked={theme === darkTheme} onChange={changeTheme} />
+        <Toggle
+          text="Dark"
+          status="warning"
+          checked={theme === darkTheme}
+          onChange={changeTheme}
+        />
         <ScrollView style={{flex: 1}}>
           {responses
             ? responses.map(r => (
@@ -79,9 +80,11 @@ const App = () => {
           <Input
             size="small"
             status="primary"
-            label={`Define the word ${prompt}`}
+            label={`Define the word "${prompt}"`}
+            autoCapitalize="none"
             value={response}
             onChangeText={setResponse}
+            onSubmitEditing={appendResponse}
           />
           <Layout style={styles.buttons}>
             <Button
@@ -124,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default withAuthenticator(App);
